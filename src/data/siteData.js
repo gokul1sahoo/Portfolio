@@ -62,7 +62,7 @@ const projects = [
     summary: "Portfolio Website: A responsive and interactive portfolio website showcasing projects, skills, and experience.",
     stack: ["MERN Stack", "Bootstrap"],
     links: {
-      live: "https://gokul1sahoo-portfolio.onrender.com",
+      live: "https://portfolio-6pga.onrender.com",
       repo: "https://github.com/gokul1sahoo/Portfolio.git"
     },
     image: "",
