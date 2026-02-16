@@ -1,0 +1,175 @@
+<%- include("partials/head") %>
+<div id="top" class="page">
+  <%- include("partials/navbar", { profile }) %>
+
+  <header class="hero-section">
+    <div class="container hero-content">
+      <div class="row align-items-start">
+        <div class="col-lg-8">
+          <p class="eyebrow">Hello, I am</p>
+          <h1 class="display-3"><%= profile.name %></h1>
+          <h2 class="lead-role"><%= profile.role %></h2>
+          <p class="lead text-muted"><%= profile.tagline %></p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a class="btn btn-brand" href="#projects">View Projects</a>
+            <a class="btn btn-outline-dark" href="#contact">Contact</a>
+          </div>
+        </div>
+        <div class="col-lg-4 mt-3 mt-lg-0">
+          <div class="profile-photo-container reveal">
+            <img src="<%= profile.photo %>" alt="<%= profile.name %>" class="profile-photo" />
+          </div>
+          <div class="social-media-links mt-3">
+            <a href="<%= profile.contact.socials.facebook %>" target="_blank" rel="noopener noreferrer" class="social-icon" title="Facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="<%= profile.contact.socials.instagram %>" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="<%= profile.contact.socials.linkedin %>" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="<%= profile.contact.socials.gmail %>" class="social-icon" title="Gmail">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="<%= profile.contact.socials.github %>" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="section reveal">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-5">
+          <h3 class="section-title">About</h3>
+          <p class="section-subtitle">What drives me</p>
+        </div>
+        <div class="col-lg-7">
+          <p class="section-text"><%= profile.about %></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section section-alt reveal">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <h3 class="section-title">Skills</h3>
+          <p class="section-subtitle">Tools I use daily</p>
+        </div>
+        <div class="col-lg-7">
+          <div class="skill-grid">
+            <% profile.skills.forEach((skill) => { %>
+              <span class="skill-pill"><%= skill %></span>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section reveal">
+    <div class="container">
+      <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+        <div>
+          <h3 class="section-title">Projects</h3>
+          <p class="section-subtitle">Selected work</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <% projects.forEach((project) => { %>
+          <div class="col-md-6">
+            <div class="project-card">
+              <div class="project-header">
+                <h4><%= project.title %></h4>
+                <p><%= project.summary %></p>
+              </div>
+              <div class="project-tags">
+                <% project.stack.forEach((item) => { %>
+                  <span><%= item %></span>
+                <% }) %>
+              </div>
+              <div class="project-links">
+                <a href="<%= project.links.live %>" target="_blank" rel="noreferrer">Live</a>
+                <a href="<%= project.links.repo %>" target="_blank" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section section-alt reveal">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <h3 class="section-title">Experience</h3>
+          <p class="section-subtitle">Where I have worked</p>
+        </div>
+        <div class="col-lg-7">
+          <div class="timeline">
+            <% profile.experience.forEach((item) => { %>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                  <h5><%= item.role %> - <span><%= item.company %></span></h5>
+                  <p class="timeline-period"><%= item.period %></p>
+                  <p><%= item.details %></p>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section reveal">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <h3 class="section-title">Education</h3>
+          <p class="section-subtitle">Where I studied</p>
+        </div>
+        <div class="col-lg-7">
+          <div class="skill-grid">
+            <% profile.education.forEach((item) => { %>
+              <span class="skill-pill"><%= item %></span>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-alt reveal">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h3 class="section-title">Contact</h3>
+          <p class="section-subtitle">Lets build something</p>
+        </div>
+        <div class="col-lg-6">
+          <div class="contact-card">
+            <p><strong>Email:</strong> <a href="mailto:<%= profile.contact.email %>"><%= profile.contact.email %></a></p>
+            <p><strong>Phone:</strong> <a href="tel:<%= profile.contact.phone %>"><%= profile.contact.phone %></a></p>
+            <p><strong>Location:</strong> <%= profile.contact.location %></p>
+            <div class="d-flex gap-3 mt-3">
+              <a class="btn btn-outline-dark" href="<%= profile.contact.socials.github %>" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="btn btn-outline-dark" href="<%= profile.contact.socials.linkedin %>" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include("partials/scripts") %>
+  <%- include("partials/footer", { profile }) %>
+</div>
