@@ -64,6 +64,12 @@ Portfolio/
 
 The site works with or without MongoDB. If `MONGO_URI` is not set, it uses fallback data from `src/data/siteData.js`.
 
+### Render
+
+- Build command: `npm install`
+- Start command: `npm start`
+- Seed (optional): run `npm run seed` manually from the Render shell when `MONGO_URI` is configured
+
 ## License
 
 MIT
